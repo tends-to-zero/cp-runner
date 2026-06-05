@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <!-- Glowing gradient background -->
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer circle with pulse glow -->
+  <circle cx="12" cy="12" r="10" fill="none" stroke="url(#grad)" stroke-width="1.5" stroke-dasharray="1 1" />
+  
+  <!-- Dynamic pulse waves -->
+  <path d="M4 12h3l2-4 3 8 2-6 2 2h4" fill="none" stroke="url(#grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Sleek play indicator dot -->
+  <circle cx="17.5" cy="12" r="1.5" fill="#3b82f6" />
+</svg>

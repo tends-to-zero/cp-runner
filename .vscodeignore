@@ -1,0 +1,41 @@
+# Exclude development & source files from the packaged VSIX
+
+# Source TypeScript files (compiled to out/)
+src/
+
+# Test files
+.vscode-test/
+out/test/
+
+# Source maps (not needed at runtime)
+out/**/*.map
+
+# Node modules (dependencies are bundled by esbuild)
+node_modules/
+
+# Config & tooling files
+.eslintrc*
+.prettierrc*
+tailwind.config.js
+tsconfig.json
+.editorconfig
+.gitignore
+.gitattributes
+
+# Build-time CSS input (compiled to out/webview/styles.css)
+src/webview/input.css
+
+# Repo & CI files
+.github/
+.git/
+*.vsix
+
+# Package manager lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Misc
+*.log
+.DS_Store
+Thumbs.db

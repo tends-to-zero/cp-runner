@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── VS Code Integration ──────────────────────────────── */
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--vscode-editor-background);
+  color: var(--vscode-editor-foreground);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* ─── Scrollbar Hiding ─────────────────────────────────── */
+::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+* {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+/* ─── Glassmorphism Card ───────────────────────────────── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* ─── Range Input Styling ──────────────────────────────── */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 4px;
+  background: #27272a;
+  cursor: pointer;
+  outline: none;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #3b82f6;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.6);
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #3b82f6;
+  cursor: pointer;
+  border: none;
+}
+
+/* ─── Checkbox Styling ─────────────────────────────────── */
+input[type='checkbox'] {
+  accent-color: #3b82f6;
+  width: 13px;
+  height: 13px;
+  cursor: pointer;
+}
+
+/* ─── Textarea & Input Reset ───────────────────────────── */
+textarea, input[type='text'], input[type='number'] {
+  color-scheme: dark;
+}
+
+textarea::placeholder,
+input::placeholder {
+  color: rgba(161, 161, 170, 0.4);
+}

@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2021",
+    "outDir": "out",
+    "lib": [
+      "es2021",
+      "dom",
+      "dom.iterable"
+    ],
+    "sourceMap": true,
+    "strict": true,
+    "rootDir": "src",
+    "esModuleInterop": true,
+    "jsx": "react",
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "exclude": [
+    "node_modules",
+    ".vscode-test"
+  ]
+}

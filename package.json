@@ -1,0 +1,248 @@
+{
+  "name": "cp-runner",
+  "displayName": "CP Runner",
+  "description": "A blazing-fast Competitive Programming test case runner for VS Code. ",
+  "version": "1.0.0",
+  "publisher": "Shawal",
+  "license": "MIT",
+  "icon": "resources/icon.png",
+  "galleryBanner": {
+    "color": "#0f172a",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Testing",
+    "Debuggers",
+    "Other"
+  ],
+  "keywords": [
+    "competitive programming",
+    "cp",
+    "test runner",
+    "codeforces",
+    "leetcode",
+    "algorithm",
+    "c++",
+    "java",
+    "python",
+    "test cases",
+    "icpc",
+    "atcoder"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onView:cp-runner-view",
+    "onCommand:cp-runner.runTests"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "cp-runner-sidebar",
+          "title": "CP Runner",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "cp-runner-sidebar": [
+        {
+          "type": "webview",
+          "id": "cp-runner-view",
+          "name": "CP Runner",
+          "visibility": "visible"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "cp-runner.runTests",
+        "title": "CP Runner: Run Test Cases",
+        "icon": "$(play)"
+      },
+      {
+        "command": "cp-runner.stopExecution",
+        "title": "CP Runner: Stop Test Cases",
+        "icon": "$(terminate)"
+      },
+      {
+        "command": "cp-runner.addTestCase",
+        "title": "CP Runner: Add Test Case",
+        "icon": "$(add)"
+      },
+      {
+        "command": "cp-runner.clearTestCases",
+        "title": "CP Runner: Clear All Test Cases"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "cp-runner.runTests",
+        "key": "ctrl+alt+r",
+        "mac": "ctrl+alt+r",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "cp-runner.stopExecution",
+        "key": "ctrl+alt+s",
+        "mac": "ctrl+alt+s",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "title": "CP Test Case Runner Settings",
+      "properties": {
+        "cp-runner.execution.timeLimit": {
+          "type": "integer",
+          "default": 2000,
+          "minimum": 50,
+          "maximum": 10000,
+          "description": "Execution time limit per test case in milliseconds."
+        },
+        "cp-runner.execution.memoryLimit": {
+          "type": "integer",
+          "default": 256,
+          "minimum": 16,
+          "maximum": 2048,
+          "description": "Memory limit constraints in Megabytes (MB)."
+        },
+        "cp-runner.compiler.cppFlags": {
+          "type": "string",
+          "default": "-O2 -std=c++17 -Wshadow",
+          "description": "Compiler flags used when compiling C++ files."
+        },
+        "cp-runner.compiler.cFlags": {
+          "type": "string",
+          "default": "-O2 -std=c11",
+          "description": "Compiler flags used when compiling C files."
+        },
+        "cp-runner.compiler.javaFlags": {
+          "type": "string",
+          "default": "",
+          "description": "Compiler flags used when compiling Java files (javac)."
+        },
+        "cp-runner.diff.ignoreTrailingWhitespace": {
+          "type": "boolean",
+          "default": true,
+          "description": "Ignore trailing whitespace differences in actual vs expected outputs."
+        },
+        "cp-runner.diff.ignoreSystemLineEndings": {
+          "type": "boolean",
+          "default": true,
+          "description": "Normalize and ignore system line-endings (e.g. \\r\\n vs \\n)."
+        },
+        "cp-runner.diff.floatTolerance": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable Float Precision Tolerance when comparing numeric/float answers."
+        },
+        "cp-runner.diff.floatEpsilon": {
+          "type": "number",
+          "default": 0.000001,
+          "description": "Epsilon tolerance for float comparison (e.g. 1e-6)."
+        },
+        "cp-runner.concurrency.maxWorkers": {
+          "type": "integer",
+          "default": 4,
+          "minimum": 1,
+          "maximum": 16,
+          "description": "Maximum number of concurrent execution threads/workers running test cases."
+        },
+        "cp-runner.execution.autoRun": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically run all test cases whenever the active source file is saved."
+        },
+        "cp-runner.execution.autoRunKeybinding": {
+          "type": "string",
+          "default": "ctrl+alt+r",
+          "description": "Display hint for the auto-run keyboard shortcut shown in the UI panel."
+        },
+        "cp-runner.execution.autoSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically save the active source code file before running tests."
+        },
+        "cp-runner.execution.autoClearConsole": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically clear all test case outputs before starting a new run."
+        },
+        "cp-runner.compiler.cppCommand": {
+          "type": "string",
+          "default": "g++",
+          "description": "C++ compiler command / path (e.g. g++, clang++, g++-12). WARNING: This command is executed directly by the system; ensure it only points to trusted executables to avoid arbitrary code execution."
+        },
+        "cp-runner.compiler.cCommand": {
+          "type": "string",
+          "default": "gcc",
+          "description": "C compiler command / path (e.g. gcc, clang, gcc-12). WARNING: This command is executed directly by the system; ensure it only points to trusted executables."
+        },
+        "cp-runner.compiler.javaCommand": {
+          "type": "string",
+          "default": "java",
+          "description": "Java runtime command / path (e.g. java, java-17). WARNING: This command is executed directly by the system; ensure it only points to trusted executables."
+        },
+        "cp-runner.compiler.pythonCommand": {
+          "type": "string",
+          "default": "python3",
+          "description": "Python interpreter command (e.g. python3, python, py). WARNING: This command is executed directly by the system; ensure it only points to trusted executables."
+        },
+        "cp-runner.defaultLanguageExtension": {
+          "type": "string",
+          "default": ".cpp",
+          "enum": [
+            ".cpp",
+            ".c",
+            ".java",
+            ".py"
+          ],
+          "description": "Default file extension for newly created problems parsed from Competitive Companion."
+        },
+        "cp-runner.execution.focusOnFileOpen": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically focus the CP Runner panel when you open a file that has test cases assigned to it."
+        },
+        "cp-runner.ui.fontSize": {
+          "type": "integer",
+          "default": 12,
+          "minimum": 8,
+          "maximum": 24,
+          "description": "Font size (px) for input/output textareas in the CP Runner panel."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile:prod",
+    "compile:prod": "tsc --noEmit && npx tailwindcss -i src/webview/input.css -o out/webview/styles.css --minify && esbuild src/webview/index.tsx --bundle --minify --outfile=out/webview/index.js && esbuild src/extension.ts --bundle --platform=node --external:vscode --outfile=out/extension.js --minify",
+    "compile": "tsc --noEmit && npx tailwindcss -i src/webview/input.css -o out/webview/styles.css && esbuild src/webview/index.tsx --bundle --outfile=out/webview/index.js && esbuild src/extension.ts --bundle --platform=node --external:vscode --outfile=out/extension.js",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "package": "npx @vscode/vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.7",
+    "@types/react": "^19.2.15",
+    "@types/react-dom": "^19.2.3",
+    "@types/vscode": "^1.75.0",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "autoprefixer": "^10.4.21",
+    "esbuild": "^0.28.0",
+    "eslint": "^8.26.0",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  }
+}
