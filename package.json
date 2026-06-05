@@ -2,7 +2,7 @@
   "name": "cp-runner",
   "displayName": "CP Runner",
   "description": "A blazing-fast Competitive Programming test case runner for VS Code. ",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "publisher": "Shawal",
   "license": "MIT",
   "icon": "resources/icon.png",
